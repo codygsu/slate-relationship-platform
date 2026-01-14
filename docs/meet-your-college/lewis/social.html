@@ -1,0 +1,331 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Panther Portal — Lewis College Social Feed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" /><!-- GSU fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&amp;family=Oswald:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <style type="text/css">/* ===== Base ===== */
+    html, body { margin:0; padding:0; }
+    body{
+      font-family:'Lato', Arial, sans-serif;
+      background-color:#f2f4f7;
+      color:#111111;
+      line-height:1.5;
+    }
+
+    .panther-portal-page-wrapper{
+      max-width:900px;
+      margin:24px auto;
+      padding:0 16px 32px;
+    }
+
+    /* ===== Card ===== */
+    .panther-portal-card{
+      background-color:#ffffff;
+      border-radius:8px;
+      padding:24px 28px;
+      margin-top:64px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      border:1px solid #e0e6ed;
+    }
+
+    /* ===== Headings ===== */
+    .panther-portal-kicker{
+      font-family:'Oswald','Lato',Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      font-size:0.85rem;
+      margin:0 0 8px;
+      color:#00669E;
+    }
+
+    .panther-portal-heading{
+      font-family:'Oswald','Lato',Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      font-size:1.5rem;
+      margin:0 0 10px;
+      color:#0039A6 !important;
+    }
+
+    .panther-portal-subtext{
+      margin:0;
+      font-size:1rem;
+      color:#333333;
+    }
+
+    /* ===== Header + buttons row ===== */
+    .pp-social-hero{
+      display:flex;
+      gap:16px;
+      align-items:center; /* vertically center the right column */
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    .pp-social-hero-left{
+      min-width:240px;
+      flex:1 1 560px;
+    }
+
+    .pp-social-hero-right{
+      flex:0 0 auto;
+      display:flex;
+      align-items:center; /* keep buttons centered vertically */
+      justify-content:flex-end;
+      align-self:center;
+    }
+
+    /* ===== Buttons (blocked, centered) ===== */
+    .pp-btn{
+      display:flex;
+      width:100%;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 10px;
+      font-size:0.78rem;
+      border-radius:0;
+      border:1px solid #0039A6;
+      background-color:#0039A6;
+      color:#FFFFFF !important;
+      cursor:pointer;
+      font-weight:900;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      transition:background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      user-select:none;
+      box-sizing:border-box;
+      text-align:center;
+      white-space:normal;
+    }
+
+    .pp-btn:hover{
+      background-color:#0039A6;
+      color:#FFFFFF !important;
+      border-color:#0039A6;
+      box-shadow:0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .pp-btn:focus{
+      outline:2px solid #00AEEF;
+      outline-offset:2px;
+    }
+
+    .pp-btn--secondary{
+      border-color:#d7e2ee;
+      background:#ffffff;
+      color:#0039A6 !important;
+    }
+
+    .pp-btn--secondary:hover{
+      border-color:#0039A6;
+      background:#ffffff;
+      color:#0039A6 !important;
+    }
+
+    .pp-btn-row{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      width:min(260px, 100%);
+    }
+
+    /* ===== Feed shell ===== */
+    .pp-feed-shell{
+      margin-top:14px;
+      border:1px solid #d7e2ee;
+      border-radius:8px;
+      overflow:hidden;
+      background:#ffffff;
+      box-shadow:0 1px 4px rgba(0,0,0,0.06);
+      position:relative;
+    }
+
+    .pp-feed-header{
+      padding:12px 12px 10px;
+      background:#f7f9fb;
+      border-bottom:1px solid #d7e2ee;
+    }
+
+    .pp-feed-header h3{
+      margin:0 0 4px;
+      font-family:'Oswald','Lato',Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      font-size:0.95rem;
+      color:#0039A6;
+    }
+
+    .pp-feed-header p{
+      margin:0;
+      color:#555555;
+      font-size:0.92rem;
+    }
+
+    .pp-feed-body{
+      background:#ffffff;
+    }
+
+    /* ===== Horizontal post scroller ===== */
+    .pp-scroll-wrap{ position:relative; }
+
+    .pp-horizontal-scroll{
+      display:flex;
+      gap:12px;
+      padding:12px;
+      overflow-x:auto;
+      overflow-y:hidden;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    .pp-horizontal-scroll:focus{
+      outline:2px solid #00AEEF;
+      outline-offset:2px;
+    }
+
+    /* Subtle edge fades */
+    .pp-fade-left, .pp-fade-right{
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:40px;
+      pointer-events:none;
+      z-index:2;
+    }
+    .pp-fade-left{
+      left:0;
+      background:linear-gradient(to right, #ffffff 15%, rgba(255,255,255,0));
+    }
+    .pp-fade-right{
+      right:0;
+      background:linear-gradient(to left, #ffffff 15%, rgba(255,255,255,0));
+    }
+
+    .pp-post-card{
+      flex:0 0 340px;
+      scroll-snap-align:start;
+      border:1px solid #d7e2ee;
+      border-radius:8px;
+      background:#ffffff;
+      box-shadow:0 1px 4px rgba(0,0,0,0.06);
+      overflow:hidden;
+      min-width:0;
+    }
+
+    .pp-post-iframe{
+      width:100%;
+      border:0;
+      overflow:hidden;
+      display:block;
+      height:560px; /* tuned; adjust if you want taller/shorter cards */
+    }
+
+    /* Slate sometimes overrides anchor colors */
+    a, a:visited { color:#00669E; }
+
+    /* ===== Responsive ===== */
+    @media (max-width:860px){
+      .pp-post-card{ flex-basis:300px; }
+      .pp-post-iframe{ height:540px; }
+    }
+
+    @media (max-width:640px){
+      .panther-portal-card{
+        padding:18px 20px;
+        margin-top:32px;
+      }
+      .panther-portal-heading{ font-size:1.3rem; }
+      .pp-btn-row{ width:100%; }
+      .pp-post-card{ flex-basis:86vw; }
+      .pp-post-iframe{ height:560px; }
+      .pp-fade-left, .pp-fade-right{ width:26px; }
+    }
+    </style>
+  </head>
+  <body>
+    <!-- Slate embed (keep if needed for your portal environment) --><script async="async" src="https://slate-admissions-showcase.technolutions.net/live?cmd=embed&amp;id=21823ec5-3dff-405f-b5b9-052a637a783b"></script>
+    <div class="panther-portal-page-wrapper">
+      <div class="panther-portal-card">
+        <div class="pp-social-hero">
+          <div class="pp-social-hero-left">
+            <div class="panther-portal-kicker">
+              STAY CONNECTED
+            </div>
+
+            <h2 class="panther-portal-heading">
+              Lewis College on Facebook
+            </h2>
+
+            <p class="panther-portal-subtext">
+              See what’s happening right now — student spotlights, milestones, events, and moments that make the Lewis College community special. Follow along to picture yourself here.
+            </p>
+          </div>
+
+          <div class="pp-social-hero-right">
+            <div class="pp-btn-row">
+              <a class="pp-btn" href="https://www.facebook.com/253669007995314?utm_source=panther_portal&amp;utm_medium=portal&amp;utm_campaign=yield&amp;utm_content=follow_facebook" rel="noopener" target="_blank">Follow on Facebook </a><a class="pp-btn pp-btn--secondary" href="https://www.facebook.com/253669007995314?utm_source=panther_portal&amp;utm_medium=portal&amp;utm_campaign=yield&amp;utm_content=view_timeline" rel="noopener" target="_blank"> Open Full Timeline </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pp-feed-shell">
+          <div class="pp-feed-header">
+            <h3>
+              Featured Posts
+            </h3>
+
+            <p>
+              Swipe left/right to browse featured updates from the Lewis College community.
+            </p>
+          </div>
+
+          <div class="pp-feed-body">
+            <div class="pp-scroll-wrap">
+              <div aria-hidden="true" class="pp-fade-left">
+              </div>
+
+              <div aria-hidden="true" class="pp-fade-right">
+              </div>
+
+              <div class="pp-horizontal-scroll" tabindex="0">
+                <!-- 1 -->
+                <div class="pp-post-card">
+                  <iframe allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" class="pp-post-iframe" scrolling="no" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FGSU.SNHP%2Fposts%2Fpfbid0xeBmsnstSMicvLJAV4LA984PuPGZKAp9VP7PhJn53JYkuz5k2m83gQvsyPiUQpY1l&amp;show_text=true&amp;width=340" title="Lewis College Facebook Post 1"></iframe>
+                </div>
+                <!-- 2 -->
+
+                <div class="pp-post-card">
+                  <iframe allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" class="pp-post-iframe" scrolling="no" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FGSU.SNHP%2Fposts%2Fpfbid0RAxX4bzYbYBcvUXctWvnBvQxEhXBAR67R9dikj5BmWByA2adM3BtH6MYTvUr2otfl&amp;show_text=true&amp;width=340" title="Lewis College Facebook Post 2"></iframe>
+                </div>
+                <!-- 3 -->
+
+                <div class="pp-post-card">
+                  <iframe allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" class="pp-post-iframe" scrolling="no" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FGSU.SNHP%2Fposts%2Fpfbid02UHor5mJ4hvzTygCikctMxyKH3c8vwQ9QqhJNFq5muk8wVrDvZht53X2GoHkZStDpl&amp;show_text=true&amp;width=340" title="Lewis College Facebook Post 3"></iframe>
+                </div>
+                <!-- 4 -->
+
+                <div class="pp-post-card">
+                  <iframe allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" class="pp-post-iframe" scrolling="no" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FGSU.SNHP%2Fposts%2Fpfbid0Juj1rXk8qgpYmaACKWDkag3oyEDQfSJT6mFNqiHh83XUDecQRbaZ7H5LLLxZ1Wjjl&amp;show_text=true&amp;width=340" title="Lewis College Facebook Post 4"></iframe>
+                </div>
+                <!-- 5 -->
+
+                <div class="pp-post-card">
+                  <iframe allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" class="pp-post-iframe" scrolling="no" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FGSU.SNHP%2Fposts%2Fpfbid02aBdrG7ceVy2AJRegGbSv1dMKDvXcQgLdqjHL6PaxtXLvzZuxWgdZPCoF8B6MjEfJl&amp;show_text=true&amp;width=340" title="Lewis College Facebook Post 5"></iframe>
+                </div>
+                <!-- 6 -->
+
+                <div class="pp-post-card">
+                  <iframe allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" class="pp-post-iframe" scrolling="no" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FGSU.SNHP%2Fposts%2Fpfbid026DDBKHGneEbQ8VKf7W2cGd58LzoftTQj3nm7fjZammC1vGNnZVt4nsxpoYVKYxzAl&amp;show_text=true&amp;width=340" title="Lewis College Facebook Post 6"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
