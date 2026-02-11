@@ -1,1 +1,305 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title>Panther Portal — Meet Your College (Review Hub)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- GSU fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style type="text/css">
+    /* ===== Base ===== */
+    html, body { margin:0; padding:0; }
+    body{
+      font-family:'Lato', Arial, sans-serif;
+      background-color:#f2f4f7;
+      color:#111111;
+      line-height:1.5;
+    }
+
+    .panther-portal-page-wrapper{
+      max-width:900px;
+      margin:24px auto;
+      padding:0 16px 32px;
+    }
+
+    /* ===== Card ===== */
+    .panther-portal-card{
+      background-color:#ffffff;
+      border-radius:8px;
+      padding:24px 28px;
+      margin-top:24px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      border:1px solid #e0e6ed;
+    }
+
+    /* ===== Headings ===== */
+    .panther-portal-kicker{
+      font-family:'Oswald','Lato',Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      font-size:0.85rem;
+      margin:0 0 8px;
+      color:#00669E;
+    }
+
+    .panther-portal-heading{
+      font-family:'Oswald','Lato',Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      font-size:1.5rem;
+      margin:0 0 10px;
+      color:#0039A6 !important;
+    }
+
+    .panther-portal-subtext{
+      margin:0 0 16px;
+      font-size:1rem;
+      color:#333333;
+    }
+
+    .panther-portal-divider{
+      border-top:2px dotted #00AEEF;
+      margin:16px 0 14px;
+    }
+
+    /* ===== Two-column helper layout ===== */
+    .pp-college-layout{
+      display:grid;
+      grid-template-columns:1.15fr 0.85fr;
+      gap:16px;
+      align-items:start;
+    }
+
+    .pp-college-left{
+      background:#f7f9fb;
+      border:1px solid #d7e2ee;
+      border-radius:8px;
+      padding:16px 16px 14px;
+    }
+
+    .pp-college-left h3{
+      margin:0 0 8px;
+      font-family:'Oswald','Lato',Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      font-size:1.05rem;
+      color:#0039A6;
+    }
+
+    .pp-college-left p{
+      margin:0 0 10px;
+      color:#333333;
+      font-size:0.98rem;
+    }
+
+    .pp-value-list{
+      margin:12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+
+    .pp-value-item{
+      background:#ffffff;
+      border:1px solid #d7e2ee;
+      border-radius:8px;
+      padding:12px 12px 10px;
+    }
+
+    .pp-value-item strong{
+      display:block;
+      font-weight:900;
+      color:#111111;
+      margin:0 0 4px;
+      letter-spacing:0.02em;
+    }
+
+    .pp-value-item span{
+      display:block;
+      color:#444444;
+      font-size:0.95rem;
+    }
+
+    /* ===== Buttons (blocked, centered) ===== */
+    .pp-btn{
+      display:flex;
+      width:100%;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 10px;
+      font-size:0.78rem;
+      border-radius:0;
+      border:1px solid #0039A6;
+      background-color:#0039A6;
+      color:#FFFFFF !important;
+      cursor:pointer;
+      font-weight:900;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      transition:background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      user-select:none;
+      box-sizing:border-box;
+      text-align:center;
+      white-space:normal;
+    }
+
+    .pp-btn:hover{
+      background-color:#0039A6;
+      color:#FFFFFF !important;
+      border-color:#0039A6;
+      box-shadow:0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .pp-btn:focus{
+      outline:2px solid #00AEEF;
+      outline-offset:2px;
+    }
+
+    .pp-btn--secondary{
+      border-color:#d7e2ee;
+      background:#ffffff;
+      color:#0039A6 !important;
+    }
+
+    .pp-btn--secondary:hover{
+      border-color:#0039A6;
+      background:#ffffff;
+      color:#0039A6 !important;
+    }
+
+    .pp-btn-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      width:100%;
+    }
+
+    .pp-small-note{
+      margin:0;
+      color:#666666;
+      font-size:0.88rem;
+    }
+
+    /* Slate sometimes overrides anchor colors */
+    a, a:visited { color:#00669E; }
+
+    /* ===== Responsive ===== */
+    @media (max-width:860px){
+      .pp-college-layout{ grid-template-columns:1fr; }
+    }
+
+    @media (max-width:640px){
+      .panther-portal-card{
+        padding:18px 20px;
+      }
+      .panther-portal-heading{ font-size:1.3rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="panther-portal-page-wrapper">
+
+    <!-- Overview / Instructions -->
+    <div class="panther-portal-card">
+      <div class="panther-portal-kicker">MEET YOUR ACADEMIC HOME</div>
+      <h2 class="panther-portal-heading">Meet Your College — Review Hub</h2>
+      <p class="panther-portal-subtext">
+        In the undergraduate experience, students who indicate a program of interest will see a “Meet Your College” page
+        tailored to their academic home. This widget is one of several portal components, but we’re starting here because
+        it sets the tone: <strong>you belong here</strong>, and you can picture yourself in the community that will support your goals.
+      </p>
+
+      <hr class="panther-portal-divider" />
+
+      <div class="pp-college-layout">
+        <div class="pp-college-left">
+          <h3>How To Review</h3>
+          <p>
+            Use the links on this page to open each college page in a new window (so it mirrors how the content is experienced
+            in-context). Review the content, video embed, and calls-to-action as a cohesive “welcome to your academic home” moment.
+          </p>
+
+          <ul class="pp-value-list">
+            <li class="pp-value-item">
+              <strong>What we’re testing</strong>
+              <span>Clarity, warmth, credibility, and whether the page creates a strong sense of “academic home.”</span>
+            </li>
+            <li class="pp-value-item">
+              <strong>What to look for</strong>
+              <span>Voice/tone, accuracy, usefulness of CTAs, and whether the experience feels supportive and easy to navigate.</span>
+            </li>
+            <li class="pp-value-item">
+              <strong>How to send feedback</strong>
+              <span>Use the Email Feedback button on this page (it pre-fills the subject line).</span>
+            </li>
+          </ul>
+        </div>
+
+        <div aria-label="Email feedback">
+          <div class="pp-college-left">
+            <h3>Send Feedback</h3>
+            <p class="pp-small-note" style="margin:0 0 10px;">
+              Click below to email feedback. The subject line will be pre-filled as <strong>Meet Your College Feedback</strong>.
+            </p>
+
+            <div class="pp-btn-grid">
+              <a class="pp-btn" target="_blank" rel="noopener"
+                 href="mailto:3021a52a.mygsu.onmicrosoft.com@amer.teams.ms?subject=Meet%20Your%20College%20Feedback">
+                Email Feedback
+              </a>
+
+              <a class="pp-btn pp-btn--secondary" target="_blank" rel="noopener"
+                 href="mailto:3021a52a.mygsu.onmicrosoft.com@amer.teams.ms?subject=Meet%20Your%20College%20Feedback&body=Page%20reviewed%3A%20%0AWhat%20worked%20well%3A%20%0AWhat%20was%20unclear%20or%20missing%3A%20%0ASuggested%20improvements%3A%20">
+                Email Feedback (With Template)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- College links -->
+    <div class="panther-portal-card">
+      <div class="panther-portal-kicker">REVIEW THE PAGES</div>
+      <h2 class="panther-portal-heading">College Pages</h2>
+      <p class="panther-portal-subtext">
+        Each link opens the corresponding “Meet Your College” page in a new window.
+        (These are relative links intended for your GitHub directory.)
+      </p>
+
+      <hr class="panther-portal-divider" />
+
+      <div class="pp-btn-grid">
+        <!-- Update filenames below if your repo uses different names -->
+        <a class="pp-btn pp-btn--secondary" target="_blank" rel="noopener" href="./ibms.html">
+          Institute for Biomedical Sciences
+        </a>
+
+        <a class="pp-btn pp-btn--secondary" target="_blank" rel="noopener" href="./cehd.html">
+          College of Education &amp; Human Development
+        </a>
+
+        <a class="pp-btn pp-btn--secondary" target="_blank" rel="noopener" href="./perimeter.html">
+          Perimeter College
+        </a>
+
+        <a class="pp-btn pp-btn--secondary" target="_blank" rel="noopener" href="./sph.html">
+          School of Public Health
+        </a>
+      </div>
+
+      <p class="pp-small-note" style="margin-top:12px;">
+        If any of your actual filenames differ, simply replace the <code>href="./filename.html"</code> values to match your repo.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
 
